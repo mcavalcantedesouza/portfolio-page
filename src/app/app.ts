@@ -1,12 +1,19 @@
-import { Component, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  template: `<router-outlet />`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'block'
+  }
 })
 export class App {
-  protected readonly title = signal('portfolio-page');
+  // Injetar o theme service para inicializar o tema
+  private readonly themeService = inject(ThemeService);
 }
+

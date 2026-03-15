@@ -1,0 +1,80 @@
+<section
+  class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 transition-all duration-300"
+  [class.bg-gradient-to-br]="true"
+  [class.from-slate-900]="themeService.isDarkMode()"
+  [class.via-slate-950]="themeService.isDarkMode()"
+  [class.to-slate-900]="themeService.isDarkMode()"
+  [class.from-gray-50]="!themeService.isDarkMode()"
+  [class.via-white]="!themeService.isDarkMode()"
+  [class.to-gray-100]="!themeService.isDarkMode()"
+  role="region"
+  aria-label="Hero section"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center">
+      <!-- Avatar -->
+      <div class="inline-block mb-4">
+        @if (portfolio().avatarUrl) {
+          <img
+            [src]="portfolio().avatarUrl"
+            [alt]="portfolio().name"
+            class="w-32 h-32 rounded-full shadow-2xl object-cover border-4 border-blue-500"
+          />
+        } @else {
+          <div
+            class="w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-4xl font-bold shadow-2xl"
+            role="img"
+            [attr.aria-label]="'Avatar with initials ' + portfolio().initials"
+          >
+            {{ portfolio().initials }}
+          </div>
+        }
+      </div>
+
+      <!-- Title -->
+      <h1 
+        class="text-5xl md:text-7xl font-bold mb-6 transition-colors duration-300"
+        [class.text-white]="themeService.isDarkMode()"
+        [class.text-gray-900]="!themeService.isDarkMode()"
+      >
+        {{ portfolio().name }}
+      </h1>
+
+      <!-- Subtitle -->
+      <p 
+        class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed transition-colors duration-300"
+        [class.text-slate-300]="themeService.isDarkMode()"
+        [class.text-gray-700]="!themeService.isDarkMode()"
+      >
+        {{ portfolio().title }}
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="#projects"
+          class="group bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-all duration-300 inline-flex items-center gap-2 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          [class.focus:ring-offset-slate-950]="themeService.isDarkMode()"
+          [class.focus:ring-offset-white]="!themeService.isDarkMode()"
+        >
+          View My Work
+          <app-icon iconName="arrow-right" class="group-hover:translate-x-1 transition-transform" />
+        </a>
+        <a
+          href="#contact"
+          class="inline-flex items-center justify-center px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 font-semibold"
+          [class.bg-white]="themeService.isDarkMode()"
+          [class.text-blue-600]="themeService.isDarkMode()"
+          [class.hover:bg-blue-50]="themeService.isDarkMode()"
+          [class.focus:ring-offset-slate-950]="themeService.isDarkMode()"
+          [class.bg-gray-900]="!themeService.isDarkMode()"
+          [class.text-white]="!themeService.isDarkMode()"
+          [class.hover:bg-gray-800]="!themeService.isDarkMode()"
+          [class.focus:ring-offset-white]="!themeService.isDarkMode()"
+        >
+          Get In Touch
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

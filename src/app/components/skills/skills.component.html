@@ -1,0 +1,62 @@
+<section
+  id="skills"
+  class="py-20 px-4 sm:px-6 lg:px-8 transition-all duration-300"
+  [class.bg-slate-900]="themeService.isDarkMode()"
+  [class.bg-white]="!themeService.isDarkMode()"
+  role="region"
+  aria-labelledby="skills-title"
+>
+  <div class="max-w-7xl mx-auto">
+    <h2 
+      id="skills-title" 
+      class="text-4xl md:text-5xl font-bold mb-16 text-center transition-colors duration-300"
+      [class.text-white]="themeService.isDarkMode()"
+      [class.text-gray-900]="!themeService.isDarkMode()"
+    >
+      What I Do
+    </h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      @for (skill of skills(); track skill.id) {
+        <div
+          class="rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border focus-within:ring-2 focus-within:ring-blue-500"
+          [class.bg-slate-800]="themeService.isDarkMode()"
+          [class.border-blue-500/10]="themeService.isDarkMode()"
+          [class.hover:border-blue-500/30]="themeService.isDarkMode()"
+          [class.focus-within:ring-offset-slate-900]="themeService.isDarkMode()"
+          [class.bg-gray-50]="!themeService.isDarkMode()"
+          [class.border-gray-200]="!themeService.isDarkMode()"
+          [class.hover:border-blue-400]="!themeService.isDarkMode()"
+          [class.focus-within:ring-offset-white]="!themeService.isDarkMode()"
+          role="article"
+        >
+          <!-- Icon Container -->
+          <div
+            [class]="'w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg text-white ' + skill.color"
+            role="img"
+            [attr.aria-label]="skill.name + ' icon'"
+          >
+            <app-icon [iconName]="skill.iconName" />
+          </div>
+
+          <!-- Title -->
+          <h3 
+            class="text-2xl font-bold mb-4 transition-colors duration-300"
+            [class.text-white]="themeService.isDarkMode()"
+            [class.text-gray-900]="!themeService.isDarkMode()"
+          >
+            {{ skill.name }}
+          </h3>
+
+          <!-- Description -->
+          <p 
+            class="leading-relaxed transition-colors duration-300"
+            [class.text-slate-300]="themeService.isDarkMode()"
+            [class.text-gray-700]="!themeService.isDarkMode()"
+          >
+            {{ skill.description }}
+          </p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

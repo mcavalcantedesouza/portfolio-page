@@ -1,0 +1,26 @@
+<div class="theme-toggle-wrapper">
+  <!-- Light Mode Icon -->
+  <div class="icon-sun">
+    <app-icon iconName="sun" />
+  </div>
+
+  <!-- Toggle Switch -->
+  <button
+    class="toggle-switch"
+    [class.dark]="themeService.isDarkMode()"
+    (click)="toggleTheme()"
+    (mousedown)="startDrag($event)"
+    (touchstart)="startDrag($event)"
+    aria-label="Toggle between light and dark mode"
+    [attr.aria-pressed]="themeService.isDarkMode()"
+  >
+    <div class="toggle-circle">
+      <app-icon [iconName]="themeService.isDarkMode() ? 'moon' : 'sun'" />
+    </div>
+  </button>
+
+  <!-- Dark Mode Icon -->
+  <div class="icon-moon">
+    <app-icon iconName="moon" />
+  </div>
+</div>

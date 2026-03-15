@@ -1,0 +1,55 @@
+<section
+  id="contact"
+  class="py-20 px-4 sm:px-6 lg:px-8 text-white border-t transition-all duration-300"
+  [class.bg-gradient-to-br]="true"
+  [class.from-blue-600/20]="themeService.isDarkMode()"
+  [class.via-slate-900]="themeService.isDarkMode()"
+  [class.to-cyan-600/20]="themeService.isDarkMode()"
+  [class.border-blue-500/30]="themeService.isDarkMode()"
+  [class.from-blue-100]="!themeService.isDarkMode()"
+  [class.via-gray-50]="!themeService.isDarkMode()"
+  [class.to-cyan-100]="!themeService.isDarkMode()"
+  [class.border-blue-200]="!themeService.isDarkMode()"
+  role="region"
+  aria-labelledby="contact-title"
+>
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 
+      id="contact-title" 
+      class="text-4xl md:text-5xl font-bold mb-6 transition-colors duration-300"
+      [class.text-white]="themeService.isDarkMode()"
+      [class.text-gray-900]="!themeService.isDarkMode()"
+    >
+      Let's Work Together
+    </h2>
+    <p 
+      class="text-xl mb-12 leading-relaxed transition-colors duration-300"
+      [class.text-slate-300]="themeService.isDarkMode()"
+      [class.text-gray-700]="!themeService.isDarkMode()"
+    >
+      Have a project in mind? I'd love to hear about it. Let's create something amazing together.
+    </p>
+
+    <!-- Social Links -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      @for (social of socialLinks(); track social.label) {
+        <a
+          [href]="social.href"
+          [target]="social.external ? '_blank' : '_self'"
+          [rel]="social.external ? 'noopener noreferrer' : ''"
+          class="inline-flex items-center gap-4 text-white px-10 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 whitespace-nowrap"
+          [class.bg-blue-600]="themeService.isDarkMode()"
+          [class.hover:bg-blue-700]="themeService.isDarkMode()"
+          [class.focus:ring-offset-slate-900]="themeService.isDarkMode()"
+          [class.bg-blue-700]="!themeService.isDarkMode()"
+          [class.hover:bg-blue-800]="!themeService.isDarkMode()"
+          [class.focus:ring-offset-gray-50]="!themeService.isDarkMode()"
+          [attr.aria-label]="'Contact via ' + social.label"
+        >
+          <app-icon [iconName]="social.iconName" class="flex-shrink-0" />
+          {{ social.label }}
+        </a>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.material-icons {
+  font-size: inherit;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+}

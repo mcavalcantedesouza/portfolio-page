@@ -1,3 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+/* Theme variables for light and dark modes */
+:root,
+:host {
+  /* Default theme (light) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-tertiary: #9ca3af;
+  
+  --border-color: #e5e7eb;
+  --border-color-light: #f3f4f6;
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(229, 231, 235, 0.3);
+}
+
+/* Dark theme */
+:root.dark,
+:root[data-theme="dark"],
+:host.dark,
+:host[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  
+  --border-color: #334155;
+  --border-color-light: #1e293b;
+  
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(51, 65, 85, 0.3);
+}
+
+/* Light theme (explicit) */
+:root.light,
+:root[data-theme="light"],
+:host.light,
+:host[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-tertiary: #9ca3af;
+  
+  --border-color: #e5e7eb;
+  --border-color-light: #f3f4f6;
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(229, 231, 235, 0.3);
+}
+
+/* Base styles for body */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

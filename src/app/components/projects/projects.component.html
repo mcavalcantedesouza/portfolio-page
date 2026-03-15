@@ -1,0 +1,108 @@
+<section
+  id="projects"
+  class="py-20 px-4 sm:px-6 lg:px-8 transition-all duration-300"
+  [class.bg-slate-800]="themeService.isDarkMode()"
+  [class.bg-gray-100]="!themeService.isDarkMode()"
+  role="region"
+  aria-labelledby="projects-title"
+>
+  <div class="max-w-7xl mx-auto">
+    <h2 
+      id="projects-title" 
+      class="text-4xl md:text-5xl font-bold mb-16 text-center transition-colors duration-300"
+      [class.text-white]="themeService.isDarkMode()"
+      [class.text-gray-900]="!themeService.isDarkMode()"
+    >
+      Featured Projects
+    </h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (project of projects(); track project.id) {
+        <article
+          class="group rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border focus-within:ring-2 focus-within:ring-blue-500"
+          [class.bg-slate-700]="themeService.isDarkMode()"
+          [class.border-blue-500/20]="themeService.isDarkMode()"
+          [class.hover:border-blue-500/40]="themeService.isDarkMode()"
+          [class.bg-white]="!themeService.isDarkMode()"
+          [class.border-gray-200]="!themeService.isDarkMode()"
+          [class.hover:border-blue-400]="!themeService.isDarkMode()"
+        >
+          <!-- Image Container -->
+          <div 
+            class="relative h-48 overflow-hidden"
+            [class.bg-gradient-to-br]="true"
+            [class.from-slate-600]="themeService.isDarkMode()"
+            [class.to-slate-700]="themeService.isDarkMode()"
+            [class.from-gray-200]="!themeService.isDarkMode()"
+            [class.to-gray-300]="!themeService.isDarkMode()"
+          >
+            <img
+              [src]="project.image"
+              [alt]="project.title"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-blue-600/40 group-hover:bg-blue-600/50 transition-colors duration-300"
+              aria-hidden="true"
+            ></div>
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <!-- Title -->
+            <h3 
+              class="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors duration-300"
+              [class.text-white]="themeService.isDarkMode()"
+              [class.text-gray-900]="!themeService.isDarkMode()"
+            >
+              {{ project.title }}
+            </h3>
+
+            <!-- Description -->
+            <p 
+              class="mb-4 leading-relaxed transition-colors duration-300"
+              [class.text-slate-300]="themeService.isDarkMode()"
+              [class.text-gray-700]="!themeService.isDarkMode()"
+            >
+              {{ project.description }}
+            </p>
+
+            <!-- Tech Stack -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              @for (tech of project.tech; track tech) {
+                <span
+                  class="px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300"
+                  [class.bg-blue-500/20]="themeService.isDarkMode()"
+                  [class.text-blue-300]="themeService.isDarkMode()"
+                  [class.border]="true"
+                  [class.border-blue-500/30]="themeService.isDarkMode()"
+                  [class.bg-blue-100]="!themeService.isDarkMode()"
+                  [class.text-blue-900]="!themeService.isDarkMode()"
+                  [class.border-blue-200]="!themeService.isDarkMode()"
+                  role="tag"
+                >
+                  {{ tech }}
+                </span>
+              }
+            </div>
+
+            <!-- CTA Link -->
+            <a
+              [href]="project.link"
+              class="font-semibold flex items-center gap-2 hover:gap-3 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              [class.text-blue-400]="themeService.isDarkMode()"
+              [class.hover:text-blue-300]="themeService.isDarkMode()"
+              [class.focus:ring-offset-slate-700]="themeService.isDarkMode()"
+              [class.text-blue-600]="!themeService.isDarkMode()"
+              [class.hover:text-blue-700]="!themeService.isDarkMode()"
+              [class.focus:ring-offset-white]="!themeService.isDarkMode()"
+            >
+              View Project
+              <app-icon iconName="external-link" class="group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
