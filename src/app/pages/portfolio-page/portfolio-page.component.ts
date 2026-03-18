@@ -21,18 +21,8 @@ import { FooterComponent } from '../../components/footer/footer.component';
     ContactComponent,
     FooterComponent
   ],
-  template: `
-    <div class="min-h-screen bg-gray-950">
-      <app-header />
-      <app-hero />
-      <app-about />
-      <app-skills />
-      <app-projects />
-      <app-contact />
-      <app-footer />
-      <router-outlet />
-    </div>
-  `,
+  templateUrl: './portfolio-page.component.html',
+  styleUrl: './portfolio-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'block'

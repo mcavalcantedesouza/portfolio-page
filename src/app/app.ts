@@ -6,7 +6,7 @@ import { ThemeService } from './services/theme.service';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: `<router-outlet />`,
+  templateUrl: './app.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'block'
