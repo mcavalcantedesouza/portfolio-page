@@ -21,6 +21,7 @@ export class PortfolioService {
     email: 'michelc.desouza@gmail.com',
     description: `Full-Stack Engineer specialized in Angular and Node.js. I build scalable applications while optimizing cloud infrastructure through FinOps. Passionate about AI integration via the Model Context Protocol (MCP).`,
     initials: 'MC',
+    avatarUrl: 'https://avatars.githubusercontent.com/u/149630140?v=4',
   });
 
   private readonly _projects = signal<Project[]>([
@@ -30,8 +31,7 @@ export class PortfolioService {
       description:
         'A platform for learning to code, featuring courses, challenges, and a community.',
       tech: ['React', 'Node.js', 'Nest', 'PostgreSQL', 'Docker'],
-      image:
-        'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://avatars.githubusercontent.com/u/167445355?v=4',
       link: 'https://github.com/Projeto-Integrador-CodeAxis',
     },
     {

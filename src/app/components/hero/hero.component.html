@@ -1,15 +1,4 @@
-<section
-  class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 transition-all duration-300"
-  [class.bg-gradient-to-br]="true"
-  [class.from-slate-900]="themeService.isDarkMode()"
-  [class.via-slate-950]="themeService.isDarkMode()"
-  [class.to-slate-900]="themeService.isDarkMode()"
-  [class.from-gray-50]="!themeService.isDarkMode()"
-  [class.via-white]="!themeService.isDarkMode()"
-  [class.to-gray-100]="!themeService.isDarkMode()"
-  role="region"
-  aria-label="Hero section"
->
+<section [ngClass]="heroBackgroundClasses()" role="region" aria-label="Hero section">
   <div class="max-w-7xl mx-auto">
     <div class="text-center">
       <!-- Avatar -->
@@ -32,20 +21,12 @@
       </div>
 
       <!-- Title -->
-      <h1 
-        class="text-5xl md:text-7xl font-bold mb-6 transition-colors duration-300"
-        [class.text-white]="themeService.isDarkMode()"
-        [class.text-gray-900]="!themeService.isDarkMode()"
-      >
+      <h1 [ngClass]="titleClasses()">
         {{ portfolio().name }}
       </h1>
 
       <!-- Subtitle -->
-      <p 
-        class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed transition-colors duration-300"
-        [class.text-slate-300]="themeService.isDarkMode()"
-        [class.text-gray-700]="!themeService.isDarkMode()"
-      >
+      <p [ngClass]="subtitleClasses()">
         {{ portfolio().title }}
       </p>
 

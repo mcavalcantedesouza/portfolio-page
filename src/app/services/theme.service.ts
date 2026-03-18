@@ -1,10 +1,10 @@
-import { Injectable, effect, inject, signal } from '@angular/core';
+import { Injectable, effect, inject, signal, computed } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 export type Theme = 'light' | 'dark';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeService {
   private readonly document = inject(DOCUMENT);
@@ -12,12 +12,12 @@ export class ThemeService {
   // Signal para armazenar o tema atual
   private readonly currentTheme = signal<Theme>(this.getInitialTheme());
 
-  // Sinais públicos
+  // Sinais públicos readonly com computed
   readonly theme$ = this.currentTheme.asReadonly();
-  readonly isDarkMode$ = this.currentTheme.asReadonly();
+  readonly isDarkMode = computed(() => this.currentTheme() === 'dark');
 
   constructor() {
-    // Efeito para aplicar o tema ao DOM sempre que mudar
+    // Effect para aplicar o tema ao DOM e persistir sempre que mudar
     effect(() => {
       const theme = this.currentTheme();
       this.applyTheme(theme);
@@ -36,9 +36,8 @@ export class ThemeService {
     }
 
     // Detectar preferência do sistema
-    const prefersDark = this.document.defaultView?.matchMedia(
-      '(prefers-color-scheme: dark)'
-    ).matches ?? true;
+    const prefersDark =
+      this.document.defaultView?.matchMedia('(prefers-color-scheme: dark)').matches ?? true;
 
     return prefersDark ? 'dark' : 'light';
   }
@@ -48,11 +47,11 @@ export class ThemeService {
    */
   private applyTheme(theme: Theme): void {
     const htmlElement = this.document.documentElement;
-    
+
     // Remover ambas as classes e adicionar a correta
     htmlElement.classList.remove('light', 'dark');
     htmlElement.classList.add(theme);
-    
+
     // Também adicionar ao body para compatibilidade
     const bodyElement = this.document.body;
     bodyElement.classList.remove('light', 'dark');
@@ -89,12 +88,5 @@ export class ThemeService {
   toggleTheme(): void {
     const newTheme = this.currentTheme() === 'dark' ? 'light' : 'dark';
     this.setTheme(newTheme);
-  }
-
-  /**
-   * Verifica se está em modo escuro
-   */
-  isDarkMode(): boolean {
-    return this.currentTheme() === 'dark';
   }
 }

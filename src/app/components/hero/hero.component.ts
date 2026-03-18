@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { PortfolioService } from '../../services/portfolio.service';
 import { ThemeService } from '../../services/theme.service';
@@ -10,16 +11,45 @@ import { ThemeService } from '../../services/theme.service';
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [IconComponent],
+  imports: [CommonModule, IconComponent],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'block'
-  }
+    class: 'block',
+  },
 })
 export class HeroComponent {
   private readonly portfolioService = inject(PortfolioService);
   protected readonly themeService = inject(ThemeService);
   protected readonly portfolio = this.portfolioService.portfolio$;
+
+  // Computed signal for hero background classes - optimizes theme-dependent styling
+  protected readonly heroBackgroundClasses = computed(() => {
+    const isDark = this.themeService.isDarkMode();
+    return {
+      'pt-32 pb-20 px-4 sm:px-6 lg:px-8 transition-all duration-300': true,
+      'bg-gradient-to-br': true,
+      'from-slate-900': isDark,
+      'via-slate-950': isDark,
+      'to-slate-900': isDark,
+      'from-gray-50': !isDark,
+      'via-white': !isDark,
+      'to-gray-100': !isDark,
+    };
+  });
+
+  // Title styling classes
+  protected readonly titleClasses = computed(() => ({
+    'text-5xl md:text-7xl font-bold mb-6 transition-colors duration-300': true,
+    'text-white': this.themeService.isDarkMode(),
+    'text-gray-900': !this.themeService.isDarkMode(),
+  }));
+
+  // Subtitle styling classes
+  protected readonly subtitleClasses = computed(() => ({
+    'text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed transition-colors duration-300': true,
+    'text-slate-300': this.themeService.isDarkMode(),
+    'text-gray-700': !this.themeService.isDarkMode(),
+  }));
 }
