@@ -7,13 +7,13 @@
   aria-labelledby="about-title"
 >
   <div class="max-w-5xl mx-auto">
-    <h2 
-      id="about-title" 
+    <h2
+      id="about-title"
       class="text-4xl md:text-5xl font-bold mb-12 text-center transition-colors duration-300"
       [class.text-white]="themeService.isDarkMode()"
       [class.text-gray-900]="!themeService.isDarkMode()"
     >
-      About Me
+      {{ translations().about.title }}
     </h2>
     <div
       class="rounded-2xl p-8 md:p-12 shadow-xl border transition-all duration-300"
@@ -25,21 +25,19 @@
       [class.to-gray-50]="!themeService.isDarkMode()"
       [class.border-blue-200]="!themeService.isDarkMode()"
     >
-      <p 
+      <p
         class="text-lg leading-relaxed mb-6 transition-colors duration-300"
         [class.text-slate-200]="themeService.isDarkMode()"
         [class.text-gray-700]="!themeService.isDarkMode()"
       >
-        {{ portfolio().description }}
+        {{ translations().about.description }}
       </p>
-      <p 
+      <p
         class="text-lg leading-relaxed transition-colors duration-300"
         [class.text-slate-200]="themeService.isDarkMode()"
         [class.text-gray-700]="!themeService.isDarkMode()"
       >
-        When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or
-        sharing knowledge through technical writing. I believe in writing clean, maintainable code and creating
-        products that make a real impact.
+        {{ translations().about.bio }}
       </p>
     </div>
   </div>

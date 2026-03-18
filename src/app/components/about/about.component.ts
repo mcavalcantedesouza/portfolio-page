@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { PortfolioService } from '../../services/portfolio.service';
 import { ThemeService } from '../../services/theme.service';
+import { LanguageService } from '../../services/language.service';
 
 /**
  * About Component
@@ -13,12 +14,14 @@ import { ThemeService } from '../../services/theme.service';
   styleUrl: './about.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'block'
-  }
+    class: 'block',
+  },
 })
 export class AboutComponent {
   private readonly portfolioService = inject(PortfolioService);
   protected readonly themeService = inject(ThemeService);
+  protected readonly languageService = inject(LanguageService);
 
   protected readonly portfolio = this.portfolioService.portfolio$;
+  protected readonly translations = this.languageService.currentTranslations;
 }

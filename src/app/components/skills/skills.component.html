@@ -7,13 +7,13 @@
   aria-labelledby="skills-title"
 >
   <div class="max-w-7xl mx-auto">
-    <h2 
-      id="skills-title" 
+    <h2
+      id="skills-title"
       class="text-4xl md:text-5xl font-bold mb-16 text-center transition-colors duration-300"
       [class.text-white]="themeService.isDarkMode()"
       [class.text-gray-900]="!themeService.isDarkMode()"
     >
-      What I Do
+      {{ languageService.currentTranslations().skills.title }}
     </h2>
     <div class="grid md:grid-cols-3 gap-8">
       @for (skill of skills(); track skill.id) {
@@ -31,7 +31,10 @@
         >
           <!-- Icon Container -->
           <div
-            [class]="'w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg text-white ' + skill.color"
+            [class]="
+              'w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg text-white ' +
+              skill.color
+            "
             role="img"
             [attr.aria-label]="skill.name + ' icon'"
           >
@@ -39,7 +42,7 @@
           </div>
 
           <!-- Title -->
-          <h3 
+          <h3
             class="text-2xl font-bold mb-4 transition-colors duration-300"
             [class.text-white]="themeService.isDarkMode()"
             [class.text-gray-900]="!themeService.isDarkMode()"
@@ -48,7 +51,7 @@
           </h3>
 
           <!-- Description -->
-          <p 
+          <p
             class="leading-relaxed transition-colors duration-300"
             [class.text-slate-300]="themeService.isDarkMode()"
             [class.text-gray-700]="!themeService.isDarkMode()"

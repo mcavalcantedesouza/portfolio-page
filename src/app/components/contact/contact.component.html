@@ -14,20 +14,20 @@
   aria-labelledby="contact-title"
 >
   <div class="max-w-4xl mx-auto text-center">
-    <h2 
-      id="contact-title" 
+    <h2
+      id="contact-title"
       class="text-4xl md:text-5xl font-bold mb-6 transition-colors duration-300"
       [class.text-white]="themeService.isDarkMode()"
       [class.text-gray-900]="!themeService.isDarkMode()"
     >
-      Let's Work Together
+      {{ translations().contact.title }}
     </h2>
-    <p 
+    <p
       class="text-xl mb-12 leading-relaxed transition-colors duration-300"
       [class.text-slate-300]="themeService.isDarkMode()"
       [class.text-gray-700]="!themeService.isDarkMode()"
     >
-      Have a project in mind? I'd love to hear about it. Let's create something amazing together.
+      {{ translations().contact.description }}
     </p>
 
     <!-- Social Links -->

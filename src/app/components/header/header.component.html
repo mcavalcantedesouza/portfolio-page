@@ -6,14 +6,17 @@
   [class.border-gray-200]="!themeService.isDarkMode()"
   role="navigation"
   aria-label="Main navigation"
-  style="backdrop-filter: blur(12px);"
+  style="backdrop-filter: blur(12px)"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
-      <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+      <button
+        (click)="scrollToTop()"
+        class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity cursor-pointer border-0 p-0 m-0"
+      >
         Portfolio
-      </div>
+      </button>
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex space-x-8">
@@ -35,6 +38,9 @@
       <div class="flex items-center gap-4">
         <!-- Theme Toggle Component -->
         <app-theme-toggle />
+
+        <!-- Language Selector Component -->
+        <app-language-selector />
 
         <!-- Mobile Menu Button -->
         <button

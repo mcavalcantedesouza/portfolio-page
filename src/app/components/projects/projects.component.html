@@ -7,13 +7,13 @@
   aria-labelledby="projects-title"
 >
   <div class="max-w-7xl mx-auto">
-    <h2 
-      id="projects-title" 
+    <h2
+      id="projects-title"
       class="text-4xl md:text-5xl font-bold mb-16 text-center transition-colors duration-300"
       [class.text-white]="themeService.isDarkMode()"
       [class.text-gray-900]="!themeService.isDarkMode()"
     >
-      Featured Projects
+      {{ translations().projects.title }}
     </h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       @for (project of projects(); track project.id) {
