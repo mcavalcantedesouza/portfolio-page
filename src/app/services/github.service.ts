@@ -17,6 +17,26 @@ export interface GitHubUser {
 }
 
 /**
+ * GitHub API interface for repository data
+ */
+export interface GitHubRepository {
+  name: string;
+  description: string;
+  html_url: string;
+  languages_url: string;
+}
+
+/**
+ * GitHub API interface for organization data
+ */
+export interface GitHubOrganization {
+  login: string;
+  id: number;
+  avatar_url: string;
+  description: string;
+}
+
+/**
  * Service for consuming GitHub API
  * Provides GitHub user data and repository information
  */
@@ -39,7 +59,7 @@ export class GitHubService {
       const response = await this.http
         .get<GitHubUser>(`${this.baseUrl}/users/${username}`)
         .toPromise();
-      
+
       if (response) {
         this._user.set(response);
         return response;
@@ -47,6 +67,58 @@ export class GitHubService {
       return null;
     } catch (error) {
       console.error('Error fetching GitHub user:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Fetch GitHub repository data
+   * @param owner - Repository owner
+   * @param repo - Repository name
+   */
+  async fetchRepository(
+    owner: string,
+    repo: string
+  ): Promise<GitHubRepository | null> {
+    try {
+      const response = await this.http
+        .get<GitHubRepository>(`${this.baseUrl}/repos/${owner}/${repo}`)
+        .toPromise();
+      return response || null;
+    } catch (error) {
+      console.error(`Error fetching GitHub repository ${owner}/${repo}:`, error);
+      return null;
+    }
+  }
+
+  /**
+   * Fetch repository languages
+   * @param languages_url - URL for language data
+   */
+  async fetchRepositoryLanguages(
+    languages_url: string
+  ): Promise<string[] | null> {
+    try {
+      const response = await this.http.get<any>(languages_url).toPromise();
+      return response ? Object.keys(response) : null;
+    } catch (error) {
+      console.error('Error fetching repository languages:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Fetch GitHub organization data
+   * @param org - Organization name
+   */
+  async fetchOrganization(org: string): Promise<GitHubOrganization | null> {
+    try {
+      const response = await this.http
+        .get<GitHubOrganization>(`${this.baseUrl}/orgs/${org}`)
+        .toPromise();
+      return response || null;
+    } catch (error) {
+      console.error(`Error fetching GitHub organization ${org}:`, error);
       return null;
     }
   }
