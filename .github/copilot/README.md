@@ -18,8 +18,9 @@ Este diretório contém as configurações de skills customizadas do GitHub Copi
 **Propósito:** Criar e manter testes end-to-end com Playwright seguindo padrões da indústria.
 
 **Inclui:**
+
 - ✅ Page Object Model (POM) pattern
-- ✅ Fixtures e dependency injection  
+- ✅ Fixtures e dependency injection
 - ✅ BDD-style test organization
 - ✅ Best practices e anti-patterns
 - ✅ Debugging techniques
@@ -28,6 +29,7 @@ Este diretório contém as configurações de skills customizadas do GitHub Copi
 - ✅ Accessibility testing
 
 **Quando usar:**
+
 ```
 "Show me how to create a test for the hero section using POM"
 "Help me fix this flaky test"
@@ -40,13 +42,17 @@ Este diretório contém as configurações de skills customizadas do GitHub Copi
 ## 🚀 Como o Copilot Encontra as Skills
 
 ### Ativação Automática
+
 As skills são ativadas automaticamente quando:
+
 - ✨ Você está editando arquivos em `e2e/`
 - ✨ Você edita `playwright.config.ts`
 - ✨ Você menciona "e2e", "testing", ou "playwright"
 
 ### Ativação Manual
+
 Mencione a skill explicitamente:
+
 ```
 "Using the e2e-testing skill..."
 "According to the e2e-testing guide..."
@@ -57,30 +63,33 @@ Mencione a skill explicitamente:
 
 ## 📋 Localização das Instruções
 
-| Tipo | Localização | Propósito |
-|------|-----------|----------|
+| Tipo                      | Localização                                  | Propósito                                            |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------------- |
 | **Instruções Principais** | [`.instructions.md`](../../.instructions.md) | Guia geral do projeto e redirecionamento para skills |
-| **Index de Skills** | [`index.md`](./index.md) | Listagem e overview das skills disponíveis |
-| **Skill: E2E Testing** | [`e2e-testing.md`](./e2e-testing.md) | Skill especializada em testes end-to-end |
-| **Guia Completo** | [`E2E-TESTING.md`](../../E2E-TESTING.md) | Documentação detalhada com exemplos |
+| **Index de Skills**       | [`index.md`](./index.md)                     | Listagem e overview das skills disponíveis           |
+| **Skill: E2E Testing**    | [`e2e-testing.md`](./e2e-testing.md)         | Skill especializada em testes end-to-end             |
+| **Guia Completo**         | [`E2E-TESTING.md`](../../E2E-TESTING.md)     | Documentação detalhada com exemplos                  |
 
 ---
 
 ## 🔄 Workflow Recomendado
 
 ### 1. Explorar Skills Disponíveis
+
 ```bash
 # Ver as skills no VS Code
 # Command Palette > Copilot: View Skills / Agents
 ```
 
 ### 2. Usar Skills ao Desenvolver Testes
+
 ```typescript
 // Editing: e2e/my-feature.spec.ts
 // Copilot detecta automaticamente e oferece skill de E2E testing
 ```
 
 ### 3. Pedir Ajuda com Skills
+
 ```
 Ctrl+I (ou Cmd+I no Mac)
 "Help me create tests for the skills according to e2e-testing best practices"
@@ -91,6 +100,7 @@ Ctrl+I (ou Cmd+I no Mac)
 ## 💡 Exemplos de Uso
 
 ### Criar Novo Teste
+
 ```bash
 # Você está em: e2e/new-feature.spec.ts
 # Diga ao Copilot:
@@ -98,6 +108,7 @@ Ctrl+I (ou Cmd+I no Mac)
 ```
 
 ### Debugar Teste Flaky
+
 ```bash
 # Você está em: e2e/flaky-test.spec.ts
 # Diga ao Copilot:
@@ -105,6 +116,7 @@ Ctrl+I (ou Cmd+I no Mac)
 ```
 
 ### Implementar CI/CD
+
 ```bash
 # Você está criando: .github/workflows/e2e.yml
 # Diga ao Copilot:
@@ -148,6 +160,7 @@ keywords:
 ## 🎓 Padrão de Skill
 
 Uma skill bem estruturada inclui:
+
 - ✅ Descrição clara do escopo
 - ✅ Padrões recomendados
 - ✅ Exemplos de código
@@ -160,15 +173,16 @@ Uma skill bem estruturada inclui:
 
 ## 📊 Status das Skills
 
-| Skill | Status | Versão | Última Atualização |
-|-------|--------|--------|-------------------|
-| E2E Testing | ✅ Produção | 1.0 | Março 2026 |
+| Skill       | Status      | Versão | Última Atualização |
+| ----------- | ----------- | ------ | ------------------ |
+| E2E Testing | ✅ Produção | 1.0    | Março 2026         |
 
 ---
 
 ## 🤝 Contribuir
 
 Para adicionar ou melhorar skills:
+
 1. Edite o arquivo `.md` correspondente
 2. Teste com o Copilot
 3. Faça commit com mensagem clara

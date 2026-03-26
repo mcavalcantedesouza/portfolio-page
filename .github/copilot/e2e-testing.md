@@ -229,15 +229,15 @@ test('should navigate through sections', async ({ portfolioPage }) => {
 ```typescript
 test('should toggle dark mode', async ({ portfolioPage }) => {
   await portfolioPage.navigateToHome();
-  
+
   const initialMode = await portfolioPage.page.evaluate(() =>
-    document.documentElement.getAttribute('data-theme')
+    document.documentElement.getAttribute('data-theme'),
   );
 
   await portfolioPage.toggleTheme();
 
   const newMode = await portfolioPage.page.evaluate(() =>
-    document.documentElement.getAttribute('data-theme')
+    document.documentElement.getAttribute('data-theme'),
   );
 
   expect(newMode).not.toBe(initialMode);
@@ -364,16 +364,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
-      
+
       - name: Run E2E tests
         run: npm run e2e
-      
+
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v3
@@ -410,27 +410,31 @@ Key settings in `playwright.config.ts`:
 ## Creating New Tests Workflow
 
 1. **Create Page Object** (if needed)
+
    ```bash
    # e2e/pages/my.page.ts
    export class MyPage extends BasePage { ... }
    ```
 
 2. **Export Page Objects** (update e2e/pages/index.ts)
+
    ```typescript
    export { MyPage } from './my.page';
    ```
 
 3. **Create Fixture** (if using custom page)
+
    ```typescript
    // e2e/fixtures/my.fixture.ts
    export const test = base.extend<MyFixtures>({ ... });
    ```
 
 4. **Write Tests**
+
    ```typescript
    // e2e/my.spec.ts
    import { test, expect } from '../fixtures/my.fixture';
-   
+
    test('should do something', async ({ myPage }) => {
      await myPage.navigate();
      // arrange, act, assert
@@ -458,7 +462,7 @@ test('should match screenshot', async ({ page }) => {
 
 ```typescript
 test('should handle API errors', async ({ page }) => {
-  await page.route('**/api/**', route => route.abort());
+  await page.route('**/api/**', (route) => route.abort());
   await page.goto('/');
   await expect(page.locator('.error')).toBeVisible();
 });
@@ -469,8 +473,8 @@ test('should handle API errors', async ({ page }) => {
 ```typescript
 test('should make correct API calls', async ({ page }) => {
   const requests: string[] = [];
-  
-  page.on('request', req => {
+
+  page.on('request', (req) => {
     if (req.url().includes('/api/')) {
       requests.push(req.url());
     }
@@ -491,16 +495,16 @@ test('should make correct API calls', async ({ page }) => {
 
 ## Quick Reference
 
-| Command | Purpose |
-|---------|---------|
-| `npm run e2e` | Run all tests |
-| `npm run e2e:ui` | Interactive UI mode |
-| `npm run e2e:debug` | Debug mode |
-| `npm run e2e:headed` | See browser |
-| `npm run e2e:report` | View HTML report |
-| `npm run e2e:chromium` | Chromium only |
-| `npx playwright test --headed --slowMo=500` | Slow motion |
-| `npx playwright test -g "pattern"` | Run matching tests |
+| Command                                     | Purpose             |
+| ------------------------------------------- | ------------------- |
+| `npm run e2e`                               | Run all tests       |
+| `npm run e2e:ui`                            | Interactive UI mode |
+| `npm run e2e:debug`                         | Debug mode          |
+| `npm run e2e:headed`                        | See browser         |
+| `npm run e2e:report`                        | View HTML report    |
+| `npm run e2e:chromium`                      | Chromium only       |
+| `npx playwright test --headed --slowMo=500` | Slow motion         |
+| `npx playwright test -g "pattern"`          | Run matching tests  |
 
 ## Next Steps
 

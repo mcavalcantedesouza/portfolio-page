@@ -5,11 +5,13 @@ Este diretório contém skills customizadas e guias de especialização para o G
 ## 📚 Skills Disponíveis
 
 ### 1. 🎭 E2E Testing with Playwright
+
 **Arquivo:** [`e2e-testing.md`](./e2e-testing.md)
 
 Skill completa para criar e manter testes end-to-end com Playwright seguindo padrões da indústria.
 
 **Inclui:**
+
 - Page Object Model (POM) pattern
 - Fixtures e dependency injection
 - BDD-style test organization
@@ -20,6 +22,7 @@ Skill completa para criar e manter testes end-to-end com Playwright seguindo pad
 - Accessibility testing
 
 **Quando usar:**
+
 - Criando novos testes e2e
 - Debugando testes flaky
 - Implementando CI/CD
@@ -27,6 +30,7 @@ Skill completa para criar e manter testes end-to-end com Playwright seguindo pad
 - Melhorando cobertura de testes
 
 **Exemplos de uso com Copilot:**
+
 ```
 "Create a new test for the projects section using POM pattern"
 "Help me fix this flaky test"
@@ -61,6 +65,7 @@ SKILL.md                 (Patterns avançados)
 ### Ativação Automática
 
 As skills são ativadas automaticamente quando você:
+
 - Está editando arquivos em `e2e/`
 - Editando `playwright.config.ts`
 - Citando "e2e" ou "testing" nas suas queries
@@ -68,6 +73,7 @@ As skills são ativadas automaticamente quando você:
 ### Ativação Manual
 
 Mencione a skill explicitamente:
+
 ```
 "Using the e2e-testing skill, create tests for..."
 "According to the e2e-testing guide, how do I..."
@@ -97,18 +103,21 @@ Mencione a skill explicitamente:
 ## 🔄 Workflow Recomendado
 
 ### 1. Antes de Criar Testes
+
 ```bash
 npm run e2e:ui          # Ver testes existentes
 npm run e2e:report      # Verificar cobertura
 ```
 
 ### 2. Criar Novo Teste
+
 - Mencionar o que quer testar
 - Deixar o Copilot sugerir usando a skill
 - Usar POM pattern das sugestões
 - Rodar e verificar resultado
 
 ### 3. Manter Testes
+
 ```bash
 npm run e2e             # Rodar todos
 npm run e2e:debug       # Debugar
@@ -134,19 +143,20 @@ npm run e2e:report      # Ver resultados
 
 ## 🔗 Links Rápidos
 
-| Recurso | Localização |
-|---------|-----------|
-| Guia Completo | [E2E-TESTING.md](../../E2E-TESTING.md) |
-| Padrões Avançados | [SKILL.md](../../SKILL.md) |
-| Instruções Base | [.instructions.md](../../.instructions.md) |
-| Config Playwright | [playwright.config.ts](../../playwright.config.ts) |
-| Testes Exemplo | [e2e/portfolio.spec.ts](../../e2e/portfolio.spec.ts) |
+| Recurso           | Localização                                          |
+| ----------------- | ---------------------------------------------------- |
+| Guia Completo     | [E2E-TESTING.md](../../E2E-TESTING.md)               |
+| Padrões Avançados | [SKILL.md](../../SKILL.md)                           |
+| Instruções Base   | [.instructions.md](../../.instructions.md)           |
+| Config Playwright | [playwright.config.ts](../../playwright.config.ts)   |
+| Testes Exemplo    | [e2e/portfolio.spec.ts](../../e2e/portfolio.spec.ts) |
 
 ---
 
 ## 💡 Exemplos Rápidos
 
 ### Teste Simples
+
 ```typescript
 import { test, expect } from '../fixtures/portfolio.fixture';
 
@@ -157,10 +167,11 @@ test('should navigate to home', async ({ portfolioPage }) => {
 ```
 
 ### Page Object
+
 ```typescript
 export class MyPage extends BasePage {
   readonly mySelector = 'app-my-component';
-  
+
   async myAction() {
     await this.click(this.mySelector);
   }
@@ -168,6 +179,7 @@ export class MyPage extends BasePage {
 ```
 
 ### Fixture
+
 ```typescript
 export const test = base.extend<MyFixtures>({
   myPage: async ({ page }, use) => {
@@ -192,6 +204,7 @@ export const test = base.extend<MyFixtures>({
 ## 📞 Suporte
 
 Para dúvidas sobre:
+
 - **E2E Testing:** Consulte `e2e-testing.md` (esta skill)
 - **Exemplos Práticos:** Veja `E2E-TESTING.md`
 - **Padrões Avançados:** Leia `SKILL.md`

@@ -111,12 +111,24 @@ Contém métodos comuns e reutilizáveis:
 
 ```typescript
 export class BasePage {
-  async goto(path: string = '/') { /* ... */ }
-  async getTitle(): Promise<string> { /* ... */ }
-  async click(selector: string) { /* ... */ }
-  async fill(selector: string, text: string) { /* ... */ }
-  async getText(selector: string): Promise<string> { /* ... */ }
-  async isElementVisible(selector: string): Promise<boolean> { /* ... */ }
+  async goto(path: string = '/') {
+    /* ... */
+  }
+  async getTitle(): Promise<string> {
+    /* ... */
+  }
+  async click(selector: string) {
+    /* ... */
+  }
+  async fill(selector: string, text: string) {
+    /* ... */
+  }
+  async getText(selector: string): Promise<string> {
+    /* ... */
+  }
+  async isElementVisible(selector: string): Promise<boolean> {
+    /* ... */
+  }
 }
 ```
 
@@ -126,10 +138,18 @@ Específica para o portfolio:
 
 ```typescript
 export class PortfolioPage extends BasePage {
-  async navigateToHome() { /* ... */ }
-  async isHeaderVisible(): Promise<boolean> { /* ... */ }
-  async scrollToProjects() { /* ... */ }
-  async getProjectsCount(): Promise<number> { /* ... */ }
+  async navigateToHome() {
+    /* ... */
+  }
+  async isHeaderVisible(): Promise<boolean> {
+    /* ... */
+  }
+  async scrollToProjects() {
+    /* ... */
+  }
+  async getProjectsCount(): Promise<number> {
+    /* ... */
+  }
 }
 ```
 
@@ -392,4 +412,3 @@ Quando adicionar novos testes:
 npm run e2e
 npm run e2e:report
 ```
-

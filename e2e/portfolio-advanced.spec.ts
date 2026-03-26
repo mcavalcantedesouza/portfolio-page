@@ -13,8 +13,8 @@ test.describe('Portfolio - Theme Switching', () => {
 
     // Then: Theme should change
     const htmlElement = portfolioPage.page.locator('html');
-    const hasThemeAttribute = await htmlElement.evaluate((el: HTMLElement) =>
-      el.getAttribute('data-theme') || el.classList.toString()
+    const hasThemeAttribute = await htmlElement.evaluate(
+      (el: HTMLElement) => el.getAttribute('data-theme') || el.classList.toString(),
     );
     expect(hasThemeAttribute).toBeTruthy();
   });

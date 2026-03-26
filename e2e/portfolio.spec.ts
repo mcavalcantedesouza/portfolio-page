@@ -130,7 +130,7 @@ test.describe('Portfolio - SEO and Accessibility', () => {
     const imagesWithoutAlt = await portfolioPage.page
       .locator('img:not([alt]), img[alt=""]')
       .count();
-    
+
     // Note: This depends on your actual implementation
     // Adjust based on your portfolio structure
     expect(imagesWithoutAlt).toBe(0);
