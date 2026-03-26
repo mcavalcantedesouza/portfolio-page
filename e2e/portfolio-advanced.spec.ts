@@ -1,9 +1,7 @@
-// @ts-expect-error - Playwright fixture typing is handled by test framework
-import { test, expect } from '../fixtures/portfolio.fixture';
+import { test, expect } from './fixtures';
 import type { Page, BrowserContext } from '@playwright/test';
 
 test.describe('Portfolio - Theme Switching', () => {
-  // @ts-expect-error - portfolioPage type is provided by fixture
   test('should toggle theme successfully', async ({ portfolioPage }) => {
     // Given: User is on portfolio
     await portfolioPage.navigateToHome();
@@ -12,14 +10,13 @@ test.describe('Portfolio - Theme Switching', () => {
     await portfolioPage.toggleTheme();
 
     // Then: Theme should change
-    const htmlElement = portfolioPage.page.locator('html');
+    const htmlElement = portfolioPage.getPage.locator('html');
     const hasThemeAttribute = await htmlElement.evaluate(
       (el: HTMLElement) => el.getAttribute('data-theme') || el.classList.toString(),
     );
     expect(hasThemeAttribute).toBeTruthy();
   });
 
-  // @ts-expect-error - page type is provided by Playwright context
   test('should persist theme preference', async ({ page }) => {
     // Set theme preference
     await page.goto('/');
@@ -43,7 +40,6 @@ test.describe('Portfolio - Theme Switching', () => {
 });
 
 test.describe('Portfolio - Projects Section', () => {
-  // @ts-expect-error - portfolioPage type is provided by fixture
   test('should load and display projects', async ({ portfolioPage }) => {
     // Given: User navigates to portfolio
     await portfolioPage.navigateToHome();
@@ -56,7 +52,6 @@ test.describe('Portfolio - Projects Section', () => {
     expect(projectCount).toBeGreaterThan(0);
   });
 
-  // @ts-expect-error - page type is provided by Playwright context
   test('should display project information', async ({ page }) => {
     // Given: User is viewing projects
     await page.goto('/');
@@ -72,7 +67,6 @@ test.describe('Portfolio - Projects Section', () => {
 });
 
 test.describe('Portfolio - Skills Section', () => {
-  // @ts-expect-error - portfolioPage type is provided by fixture
   test('should display skill cards', async ({ portfolioPage }) => {
     // Given: User navigates to portfolio
     await portfolioPage.navigateToHome();
@@ -85,7 +79,6 @@ test.describe('Portfolio - Skills Section', () => {
     expect(skillCount).toBeGreaterThan(0);
   });
 
-  // @ts-expect-error - page type is provided by Playwright context
   test('should load skills data', async ({ page }) => {
     // When: User navigates home
     await page.goto('/');
@@ -100,7 +93,6 @@ test.describe('Portfolio - Skills Section', () => {
 });
 
 test.describe('Portfolio - Contact Section', () => {
-  // @ts-expect-error - portfolioPage type is provided by fixture
   test('should display contact section', async ({ portfolioPage }) => {
     // Given: User is on portfolio
     await portfolioPage.navigateToHome();
@@ -109,10 +101,9 @@ test.describe('Portfolio - Contact Section', () => {
     await portfolioPage.scrollToContact();
 
     // Then: Contact section should be in viewport
-    await expect(portfolioPage.page.locator(portfolioPage['contactSelector'])).toBeInViewport();
+    await expect(portfolioPage.getPage.locator(portfolioPage['contactSelector'])).toBeInViewport();
   });
 
-  // @ts-expect-error - page type is provided by Playwright context
   test('should have functional contact elements', async ({ page }) => {
     // When: User navigates to contact section
     await page.goto('/');
@@ -126,7 +117,6 @@ test.describe('Portfolio - Contact Section', () => {
 });
 
 test.describe('Portfolio - Keyboard Navigation', () => {
-  // @ts-expect-error - page type is provided by Playwright context
   test('should be keyboard navigable', async ({ page }) => {
     // Given: User is on portfolio
     await page.goto('/');
@@ -141,7 +131,6 @@ test.describe('Portfolio - Keyboard Navigation', () => {
     expect(focusedElement).toBeTruthy();
   });
 
-  // @ts-expect-error - page type is provided by Playwright context
   test('should support arrow key navigation', async ({ page }) => {
     // Given: User is on portfolio
     await page.goto('/');
@@ -158,7 +147,6 @@ test.describe('Portfolio - Keyboard Navigation', () => {
 });
 
 test.describe('Portfolio - API Integration', () => {
-  // @ts-expect-error - page type is provided by Playwright context
   test('should fetch github data successfully', async ({ page }) => {
     // When: User navigates to portfolio
     await page.goto('/');
@@ -170,7 +158,6 @@ test.describe('Portfolio - API Integration', () => {
     // Adjust assertion based on your implementation
   });
 
-  // @ts-expect-error - page type is provided by Playwright context
   test('should handle API errors gracefully', async ({ page }) => {
     // This test requires mocking or network manipulation
     // When: API call fails
@@ -182,25 +169,23 @@ test.describe('Portfolio - API Integration', () => {
 test.describe('Portfolio - Dark Mode', () => {
   test.use({ colorScheme: 'dark' });
 
-  // @ts-expect-error - portfolioPage type is provided by fixture
   test('should render correctly in dark mode', async ({ portfolioPage }) => {
     // When: Browser is in dark mode
     await portfolioPage.navigateToHome();
 
     // Then: Page should be visible
-    await expect(portfolioPage.page.locator(portfolioPage['headerSelector'])).toBeVisible();
+    await expect(portfolioPage.getPage.locator(portfolioPage['headerSelector'])).toBeVisible();
   });
 });
 
 test.describe('Portfolio - Light Mode', () => {
   test.use({ colorScheme: 'light' });
 
-  // @ts-expect-error - portfolioPage type is provided by fixture
   test('should render correctly in light mode', async ({ portfolioPage }) => {
     // When: Browser is in light mode
     await portfolioPage.navigateToHome();
 
     // Then: Page should be visible
-    await expect(portfolioPage.page.locator(portfolioPage['headerSelector'])).toBeVisible();
+    await expect(portfolioPage.getPage.locator(portfolioPage['headerSelector'])).toBeVisible();
   });
 });

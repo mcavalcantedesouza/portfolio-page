@@ -7,6 +7,13 @@ export class BasePage {
   constructor(protected page: Page) {}
 
   /**
+   * Get the underlying Playwright Page instance for direct access in tests
+   */
+  get getPage(): Page {
+    return this.page;
+  }
+
+  /**
    * Navigate to a path relative to baseURL
    */
   async goto(path: string = '/') {

@@ -5,7 +5,12 @@
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "types": ["@playwright/test"]
+    "types": ["@playwright/test"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": true
   },
   "include": ["e2e/**/*.ts"],
   "exclude": ["node_modules", "dist"]
