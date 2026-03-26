@@ -23,14 +23,16 @@ export class FooterComponent {
   protected readonly themeService = inject(ThemeService);
   protected readonly portfolio = this.portfolioService.portfolio$;
 
-  // Footer classes
-  protected readonly footerClasses = computed(() => ({
-    'py-8 px-4 border-t transition-all duration-300': true,
-    'bg-slate-900': this.themeService.isDarkMode(),
-    'text-slate-400': this.themeService.isDarkMode(),
-    'border-slate-700': this.themeService.isDarkMode(),
-    'bg-white': !this.themeService.isDarkMode(),
-    'text-gray-600': !this.themeService.isDarkMode(),
-    'border-gray-200': !this.themeService.isDarkMode(),
-  }));
+  // Current year for copyright
+  protected readonly currentYear = new Date().getFullYear();
+
+  // Footer classes using template literals
+  protected readonly footerClasses = computed(() => {
+    const isDark = this.themeService.isDarkMode();
+    return `py-8 px-4 border-t transition-all duration-300 ${
+      isDark
+        ? 'bg-slate-900 text-slate-400 border-slate-700'
+        : 'bg-white text-gray-600 border-gray-200'
+    }`;
+  });
 }

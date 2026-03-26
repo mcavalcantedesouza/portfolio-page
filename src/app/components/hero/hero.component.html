@@ -1,4 +1,4 @@
-<section [ngClass]="heroBackgroundClasses()" role="region" aria-label="Hero section">
+<section [class]="heroBackgroundClasses()" role="region" aria-label="Hero section">
   <div class="max-w-7xl mx-auto">
     <div class="text-center">
       <!-- Avatar -->
@@ -21,12 +21,12 @@
       </div>
 
       <!-- Title -->
-      <h1 [ngClass]="titleClasses()">
+      <h1 [class]="titleClasses()">
         {{ portfolio().name }}
       </h1>
 
       <!-- Subtitle -->
-      <p [ngClass]="subtitleClasses()">
+      <p [class]="subtitleClasses()">
         {{ portfolio().title }}
       </p>
 

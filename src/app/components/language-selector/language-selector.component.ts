@@ -1,12 +1,11 @@
 import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { LanguageService, Language } from '../../services/language.service';
 import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-language-selector',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [IconComponent],
   template: `
     <div class="relative">
       <button

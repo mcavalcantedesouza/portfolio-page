@@ -1,56 +1,11 @@
-<section id="projects" [ngClass]="sectionClasses()" role="region" aria-labelledby="projects-title">
+<section id="projects" [class]="sectionClasses()" role="region" aria-labelledby="projects-title">
   <div class="max-w-7xl mx-auto">
-    <h2 id="projects-title" [ngClass]="titleClasses()">
+    <h2 id="projects-title" [class]="titleClasses()">
       {{ translations().projects.title }}
     </h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       @for (project of projects(); track project.id) {
-        <article [ngClass]="projectCardClasses()">
-          <!-- Image Container -->
-          <div [ngClass]="imageContainerClasses()">
-            <img
-              [src]="project.image"
-              [alt]="project.title"
-              class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
-              loading="lazy"
-            />
-            <div
-              class="absolute inset-0 bg-blue-600/40 group-hover:bg-blue-600/50 transition-colors duration-300"
-              aria-hidden="true"
-            ></div>
-          </div>
-
-          <!-- Content -->
-          <div class="p-6 flex flex-col flex-grow">
-            <!-- Title -->
-            <h3 [ngClass]="projectTitleClasses()">
-              {{ project.title }}
-            </h3>
-
-            <!-- Description -->
-            <p [ngClass]="projectDescriptionClasses()">
-              {{ project.description }}
-            </p>
-
-            <!-- Tech Stack -->
-            <div class="flex flex-wrap gap-2 mb-4">
-              @for (tech of project.tech; track tech) {
-                <span [ngClass]="techBadgeClasses()" role="tag">
-                  {{ tech }}
-                </span>
-              }
-            </div>
-
-            <!-- CTA Link -->
-            <a [href]="project.link" [ngClass]="ctaLinkClasses()">
-              View Project
-              <app-icon
-                iconName="external-link"
-                class="group-hover:translate-x-1 transition-transform"
-              />
-            </a>
-          </div>
-        </article>
+        <app-project-card [projectData]="project" />
       }
     </div>
   </div>

@@ -1,5 +1,5 @@
 <nav
-  [ngClass]="navClasses()"
+  [class]="navClasses()"
   role="navigation"
   aria-label="Main navigation"
   style="backdrop-filter: blur(12px)"
@@ -17,7 +17,7 @@
       <!-- Desktop Navigation -->
       <div class="hidden md:flex space-x-8">
         @for (link of navLinks(); track link.href) {
-          <a [href]="link.href" [ngClass]="navLinkClasses()">
+          <a [href]="link.href" [class]="navLinkClasses()">
             {{ link.label }}
           </a>
         }
@@ -33,7 +33,7 @@
 
         <!-- Mobile Menu Button -->
         <button
-          [ngClass]="mobileMenuButtonClasses()"
+          [class]="mobileMenuButtonClasses()"
           (click)="toggleMobileMenu()"
           [attr.aria-expanded]="mobileMenuOpen()"
           aria-label="Toggle mobile menu"
@@ -50,13 +50,13 @@
 
   <!-- Mobile Menu -->
   @if (mobileMenuOpen()) {
-    <div [ngClass]="mobileMenuClasses()" role="region" aria-label="Mobile navigation">
+    <div [class]="mobileMenuClasses()" role="region" aria-label="Mobile navigation">
       <div class="px-4 pt-2 pb-4 space-y-2">
         @for (link of navLinks(); track link.href) {
           <a
             [href]="link.href"
             class="block py-2"
-            [ngClass]="navLinkClasses()"
+            [class]="navLinkClasses()"
             (click)="closeMobileMenu()"
           >
             {{ link.label }}

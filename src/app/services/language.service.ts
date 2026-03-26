@@ -112,7 +112,7 @@ const enTranslations: Translations = {
     linkedin: 'LinkedIn',
   },
   footer: {
-    copyright: '© 2024 Michel Cavalcante. All rights reserved.',
+    copyright: `© ${new Date().getFullYear()} Michel Cavalcante. All rights reserved.`,
   },
   skillsData: {
     frontend: {
@@ -188,7 +188,7 @@ const ptTranslations: Translations = {
     linkedin: 'LinkedIn',
   },
   footer: {
-    copyright: '© 2024 Michel Cavalcante. Todos os direitos reservados.',
+    copyright: `© ${new Date().getFullYear()} Michel Cavalcante. Todos os direitos reservados.`,
   },
   skillsData: {
     frontend: {

@@ -1,9 +1,9 @@
-<section id="contact" [ngClass]="sectionClasses()" role="region" aria-labelledby="contact-title">
+<section id="contact" [class]="sectionClasses()" role="region" aria-labelledby="contact-title">
   <div class="max-w-4xl mx-auto text-center">
-    <h2 id="contact-title" [ngClass]="titleClasses()">
+    <h2 id="contact-title" [class]="titleClasses()">
       {{ translations().contact.title }}
     </h2>
-    <p [ngClass]="descriptionClasses()">
+    <p [class]="descriptionClasses()">
       {{ translations().contact.description }}
     </p>
 
@@ -14,7 +14,7 @@
           [href]="social.href"
           [target]="social.external ? '_blank' : '_self'"
           [rel]="social.external ? 'noopener noreferrer' : ''"
-          [ngClass]="socialButtonClasses()"
+          [class]="socialButtonClasses()"
           [attr.aria-label]="'Contact via ' + social.label"
         >
           <app-icon [iconName]="social.iconName" class="flex-shrink-0" />

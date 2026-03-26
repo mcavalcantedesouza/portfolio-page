@@ -1,13 +1,13 @@
-<section id="about" [ngClass]="sectionClasses()" role="region" aria-labelledby="about-title">
+<section id="about" [class]="sectionClasses()" role="region" aria-labelledby="about-title">
   <div class="max-w-5xl mx-auto">
-    <h2 id="about-title" [ngClass]="titleClasses()">
+    <h2 id="about-title" [class]="titleClasses()">
       {{ translations().about.title }}
     </h2>
-    <div [ngClass]="cardClasses()">
-      <p [ngClass]="textClasses() + ' mb-6'">
+    <div [class]="cardClasses()">
+      <p [class]="textClasses() + ' mb-6'">
         {{ translations().about.description }}
       </p>
-      <p [ngClass]="textClasses()">
+      <p [class]="textClasses()">
         {{ translations().about.bio }}
       </p>
     </div>

@@ -1,5 +1,5 @@
-<footer [ngClass]="footerClasses()" role="contentinfo">
+<footer [class]="footerClasses()" role="contentinfo">
   <div class="max-w-7xl mx-auto text-center">
-    <p>&copy; 2024 {{ portfolio().name }}. All rights reserved.</p>
+    <p>&copy; {{ currentYear }} {{ portfolio().name }}. All rights reserved.</p>
   </div>
 </footer>

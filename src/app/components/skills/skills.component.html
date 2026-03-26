@@ -1,33 +1,11 @@
-<section id="skills" [ngClass]="sectionClasses()" role="region" aria-labelledby="skills-title">
+<section id="skills" [class]="sectionClasses()" role="region" aria-labelledby="skills-title">
   <div class="max-w-7xl mx-auto">
-    <h2 id="skills-title" [ngClass]="titleClasses()">
+    <h2 id="skills-title" [class]="titleClasses()">
       {{ languageService.currentTranslations().skills.title }}
     </h2>
     <div class="grid md:grid-cols-3 gap-8">
       @for (skill of skills(); track skill.id) {
-        <div [ngClass]="skillCardClasses()" role="article">
-          <!-- Icon Container -->
-          <div
-            [class]="
-              'w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg text-white ' +
-              skill.color
-            "
-            role="img"
-            [attr.aria-label]="skill.name + ' icon'"
-          >
-            <app-icon [iconName]="skill.iconName" />
-          </div>
-
-          <!-- Title -->
-          <h3 [ngClass]="skillTitleClasses()">
-            {{ skill.name }}
-          </h3>
-
-          <!-- Description -->
-          <p [ngClass]="skillDescriptionClasses()">
-            {{ skill.description }}
-          </p>
-        </div>
+        <app-skill-card [skillData]="skill" />
       }
     </div>
   </div>
