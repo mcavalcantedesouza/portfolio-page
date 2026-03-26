@@ -29,7 +29,7 @@ export class ImageOptimizerService {
    */
   createResponsiveImage(
     imageName: string,
-    breakpoints: number[] = [320, 640, 1024, 1920]
+    breakpoints: number[] = [320, 640, 1024, 1920],
   ): {
     srcset: string;
     sizes: string;
@@ -65,9 +65,7 @@ export class ImageOptimizerService {
   /**
    * Get image dimensions for aspect ratio preservation
    */
-  getImageDimensions(
-    imageName: string
-  ): { width: number; height: number } {
+  getImageDimensions(imageName: string): { width: number; height: number } {
     // Default to 16:9 aspect ratio
     return {
       width: 1920,
@@ -107,7 +105,7 @@ export class ImageOptimizerService {
    */
   calculateDimensions(
     containerWidth: number,
-    aspectRatio: number = 16 / 9
+    aspectRatio: number = 16 / 9,
   ): { width: number; height: number } {
     return {
       width: containerWidth,

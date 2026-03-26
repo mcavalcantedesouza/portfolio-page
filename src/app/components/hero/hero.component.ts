@@ -29,7 +29,11 @@ export class HeroComponent {
     const isDark = this.themeService.isDarkMode();
     return new ClassBuilder()
       .add('pt-32 pb-20 px-4 sm:px-6 lg:px-8 transition-all duration-300 bg-gradient-to-br')
-      .addIf(isDark, 'from-slate-900 via-slate-950 to-slate-900', 'from-gray-50 via-white to-gray-100')
+      .addIf(
+        isDark,
+        'from-slate-900 via-slate-950 to-slate-900',
+        'from-gray-50 via-white to-gray-100',
+      )
       .build();
   });
 
@@ -46,7 +50,9 @@ export class HeroComponent {
   protected readonly subtitleClasses = computed(() => {
     const isDark = this.themeService.isDarkMode();
     return new ClassBuilder()
-      .add('text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed transition-colors duration-300')
+      .add(
+        'text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed transition-colors duration-300',
+      )
       .theme(isDark, 'text-gray-700', 'text-slate-300')
       .build();
   });

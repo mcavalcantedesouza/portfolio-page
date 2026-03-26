@@ -81,9 +81,17 @@ export class ProjectCardComponent {
   protected readonly hostClasses = computed(() => {
     const isDark = this.themeService.isDarkMode();
     return new ClassBuilder()
-      .add('group rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300')
-      .add('hover:-translate-y-2 border focus-within:ring-2 focus-within:ring-blue-500 flex flex-col block')
-      .addIf(isDark, 'border-blue-500/20 hover:border-blue-500/40', 'border-gray-200 hover:border-blue-400')
+      .add(
+        'group rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300',
+      )
+      .add(
+        'hover:-translate-y-2 border focus-within:ring-2 focus-within:ring-blue-500 flex flex-col',
+      )
+      .addIf(
+        isDark,
+        'border-blue-500/20 hover:border-blue-500/40',
+        'border-gray-200 hover:border-blue-400',
+      )
       .build();
   });
 
@@ -91,7 +99,7 @@ export class ProjectCardComponent {
   protected readonly imageContainerClasses = computed(() => {
     const isDark = this.themeService.isDarkMode();
     return new ClassBuilder()
-      .add('relative h-48 overflow-hidden bg-gradient-to-br')
+      .add('relative h-64 overflow-hidden bg-gradient-to-br')
       .addIf(isDark, 'from-slate-600 to-slate-700', 'from-gray-200 to-gray-300')
       .build();
   });
@@ -122,7 +130,7 @@ export class ProjectCardComponent {
       .addIf(
         isDark,
         'bg-blue-500/20 text-blue-300 border-blue-500/30',
-        'bg-blue-100 text-blue-900 border-blue-200'
+        'bg-blue-100 text-blue-900 border-blue-200',
       )
       .build();
   });
@@ -136,7 +144,7 @@ export class ProjectCardComponent {
       .addIf(
         isDark,
         'text-blue-400 hover:text-blue-300 focus:ring-offset-slate-700',
-        'text-blue-600 hover:text-blue-700 focus:ring-offset-white'
+        'text-blue-600 hover:text-blue-700 focus:ring-offset-white',
       )
       .build();
   });

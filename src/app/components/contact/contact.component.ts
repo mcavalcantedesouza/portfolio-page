@@ -32,11 +32,13 @@ export class ContactComponent {
   protected readonly sectionClasses = computed(() => {
     const isDark = this.themeService.isDarkMode();
     return new ClassBuilder()
-      .add('py-20 px-4 sm:px-6 lg:px-8 text-white border-t transition-all duration-300 bg-gradient-to-br')
+      .add(
+        'py-20 px-4 sm:px-6 lg:px-8 text-white border-t transition-all duration-300 bg-gradient-to-br',
+      )
       .addIf(
         isDark,
         'from-blue-600/20 via-slate-900 to-cyan-600/20 border-blue-500/30',
-        'from-blue-100 via-gray-50 to-cyan-100 border-blue-200'
+        'from-blue-100 via-gray-50 to-cyan-100 border-blue-200',
       )
       .build();
   });
@@ -65,8 +67,14 @@ export class ContactComponent {
     return new ClassBuilder()
       .add('inline-flex items-center gap-4 text-white px-10 py-3 rounded-full')
       .add('transition-all duration-300 shadow-lg hover:shadow-xl font-semibold')
-      .add('focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 whitespace-nowrap')
-      .addIf(isDark, 'bg-blue-600 hover:bg-blue-700 focus:ring-offset-slate-900', 'bg-blue-700 hover:bg-blue-800 focus:ring-offset-gray-50')
+      .add(
+        'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 whitespace-nowrap',
+      )
+      .addIf(
+        isDark,
+        'bg-blue-600 hover:bg-blue-700 focus:ring-offset-slate-900',
+        'bg-blue-700 hover:bg-blue-800 focus:ring-offset-gray-50',
+      )
       .build();
   });
 }

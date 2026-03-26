@@ -53,9 +53,15 @@ export class SkillCardComponent {
   protected readonly hostClasses = computed(() => {
     const isDark = this.themeService.isDarkMode();
     return new ClassBuilder()
-      .add('rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border')
+      .add(
+        'rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border',
+      )
       .add('focus-within:ring-2 focus-within:ring-blue-500 block')
-      .addIf(isDark, 'border-blue-500/10 hover:border-blue-500/30', 'border-gray-200 hover:border-blue-400')
+      .addIf(
+        isDark,
+        'border-blue-500/10 hover:border-blue-500/30',
+        'border-gray-200 hover:border-blue-400',
+      )
       .build();
   });
 

@@ -2,7 +2,7 @@
  * Tailwind Class Builder Utility
  * Type-safe, composable utility for building Tailwind CSS classes
  * Eliminates string concatenation errors and improves maintainability
- * 
+ *
  * Usage:
  * protected readonly sectionClasses = computed(() => {
  *   return new ClassBuilder()
@@ -19,7 +19,7 @@ export class ClassBuilder {
    * Add a single class or multiple space-separated classes
    */
   add(...classes: (string | null | undefined | false)[]): this {
-    classes.forEach(cls => {
+    classes.forEach((cls) => {
       if (cls && typeof cls === 'string') {
         this.classes.push(...cls.split(' ').filter(Boolean));
       }
@@ -33,11 +33,7 @@ export class ClassBuilder {
    * @param trueClasses - Classes to add if condition is true
    * @param falseClasses - Classes to add if condition is false (optional)
    */
-  addIf(
-    condition: boolean,
-    trueClasses: string,
-    falseClasses?: string
-  ): this {
+  addIf(condition: boolean, trueClasses: string, falseClasses?: string): this {
     if (condition) {
       this.add(trueClasses);
     } else if (falseClasses) {
@@ -64,7 +60,12 @@ export class ClassBuilder {
     Object.entries(responsive).forEach(([breakpoint, classes]) => {
       if (classes) {
         const prefix = breakpoint === 'base' ? '' : `${breakpoint}:`;
-        this.add(classes.split(' ').map(cls => prefix + cls).join(' '));
+        this.add(
+          classes
+            .split(' ')
+            .map((cls) => prefix + cls)
+            .join(' '),
+        );
       }
     });
     return this;
@@ -77,14 +78,14 @@ export class ClassBuilder {
     // Remove duplicates while preserving order
     const unique = new Set<string>();
     const filtered: string[] = [];
-    
-    this.classes.forEach(cls => {
+
+    this.classes.forEach((cls) => {
       if (!unique.has(cls) && cls.trim()) {
         unique.add(cls);
         filtered.push(cls);
       }
     });
-    
+
     return filtered.join(' ');
   }
 
@@ -163,7 +164,8 @@ export const TailwindPresets = {
   // Button secondary
   buttonSecondary: {
     base: 'px-6 py-3 rounded-lg font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2',
-    light: 'bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500 focus:ring-offset-white',
+    light:
+      'bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500 focus:ring-offset-white',
     dark: 'bg-slate-700 text-slate-100 hover:bg-slate-600 focus:ring-slate-500 focus:ring-offset-slate-900',
   },
 
@@ -179,7 +181,7 @@ export const TailwindPresets = {
  */
 export function createThemedClasses(
   isDark: boolean,
-  config: { light: string; dark: string }
+  config: { light: string; dark: string },
 ): string {
   return isDark ? config.dark : config.light;
 }
@@ -187,8 +189,6 @@ export function createThemedClasses(
 /**
  * Helper function to create responsive classes
  */
-export function createResponsiveClasses(
-  responsive: Record<string, string>
-): string {
+export function createResponsiveClasses(responsive: Record<string, string>): string {
   return new ClassBuilder().responsive(responsive).build();
 }

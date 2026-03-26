@@ -1,19 +1,16 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-  content: [
-    './src/index.html',
-    './src/**/*.{ts,html}',
-  ],
+  content: ['./src/index.html', './src/**/*.{ts,html}'],
   theme: {
     extend: {
       // Brand colors - aligned with gradient theme
       colors: {
-        'brand': {
-          'primary': '#0066ff',
-          'secondary': '#00d9ff',
-          'dark': '#0f172a',
-          'light': '#ffffff',
+        brand: {
+          primary: '#0066ff',
+          secondary: '#00d9ff',
+          dark: '#0f172a',
+          light: '#ffffff',
         },
         // Semantic colors
         'focus-ring': 'rgba(59, 130, 246, 0.5)',
@@ -40,15 +37,15 @@ export default {
       },
       // Glass morphism utilities
       backdropBlur: {
-        'glass': '12px',
+        glass: '12px',
       },
       // Custom spacing for toggle component
       width: {
-        'toggle': '56px',
+        toggle: '56px',
         'toggle-sm': '52px',
       },
       height: {
-        'toggle': '32px',
+        toggle: '32px',
         'toggle-sm': '30px',
       },
       // Z-index scale
@@ -57,7 +54,7 @@ export default {
       },
       // Custom shadows for glass effect
       boxShadow: {
-        'glass': '0 2px 8px rgba(0, 0, 0, 0.1)',
+        glass: '0 2px 8px rgba(0, 0, 0, 0.1)',
         'glass-hover': '0 2px 12px rgba(0, 0, 0, 0.15)',
         'glass-dark': '0 2px 8px rgba(0, 0, 0, 0.3)',
         'glass-dark-hover': '0 2px 12px rgba(0, 0, 0, 0.4)',

@@ -50,7 +50,11 @@ export class AboutComponent {
     const isDark = this.themeService.isDarkMode();
     return new ClassBuilder()
       .add('rounded-2xl p-8 md:p-12 shadow-xl border transition-all duration-300 bg-gradient-to-br')
-      .addIf(isDark, 'from-slate-700 to-slate-700 border-blue-500/20', 'from-gray-50 to-gray-50 border-blue-200')
+      .addIf(
+        isDark,
+        'from-slate-700 to-slate-700 border-blue-500/20',
+        'from-gray-50 to-gray-50 border-blue-200',
+      )
       .build();
   });
 

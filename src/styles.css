@@ -93,13 +93,21 @@
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: system-ui, -apple-system, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 /* Smooth transitions for theme changes on all elements */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 html {
@@ -143,4 +151,3 @@ img {
 img[loading='lazy'] {
   background-color: var(--bg-tertiary);
 }
-
