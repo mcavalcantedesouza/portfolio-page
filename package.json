@@ -5,8 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:analyze": "ng build --stats-json && webpack-bundle-analyzer dist/portfolio-page/stats.json",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "bundle-stats": "ng build --stats-json && echo 'Bundle stats generated in dist/portfolio-page/stats.json'"
   },
   "private": true,
   "packageManager": "npm@11.11.1",

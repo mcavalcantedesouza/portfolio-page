@@ -5,6 +5,7 @@ import { LanguageSelectorComponent } from '../language-selector/language-selecto
 import { PortfolioService } from '../../services/portfolio.service';
 import { ThemeService } from '../../services/theme.service';
 import { LanguageService } from '../../services/language.service';
+import { ClassBuilder } from '../../utils/class-builder';
 
 /**
  * Header Component
@@ -30,36 +31,40 @@ export class HeaderComponent {
   protected readonly navLinks = this.portfolioService.navLinks$;
   protected readonly currentTranslations = this.languageService.currentTranslations;
 
-  // Navigation bar classes using template literals
+  // Navigation bar classes using ClassBuilder for type-safety
   protected readonly navClasses = computed(() => {
     const isDark = this.themeService.isDarkMode();
-    return `fixed top-0 w-full z-50 border-b transition-all duration-300 ${
-      isDark ? 'bg-slate-900/80 border-slate-700' : 'bg-white/80 border-gray-200'
-    }`;
+    return new ClassBuilder()
+      .add('fixed top-0 w-full z-50 border-b transition-all duration-300')
+      .theme(isDark, 'bg-white/80 border-gray-200', 'bg-slate-900/80 border-slate-700')
+      .build();
   });
 
-  // Navigation link classes using template literals
+  // Navigation link classes using ClassBuilder
   protected readonly navLinkClasses = computed(() => {
     const isDark = this.themeService.isDarkMode();
-    return `transition-colors duration-300 ${
-      isDark ? 'text-slate-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
-    }`;
+    return new ClassBuilder()
+      .add('transition-colors duration-300')
+      .theme(isDark, 'text-gray-700 hover:text-blue-600', 'text-slate-300 hover:text-blue-400')
+      .build();
   });
 
-  // Mobile menu button classes using template literals
+  // Mobile menu button classes using ClassBuilder
   protected readonly mobileMenuButtonClasses = computed(() => {
     const isDark = this.themeService.isDarkMode();
-    return `md:hidden p-2 rounded-lg transition-colors ${
-      isDark ? 'bg-slate-800 hover:bg-slate-700' : 'bg-gray-100 hover:bg-gray-200'
-    }`;
+    return new ClassBuilder()
+      .add('md:hidden p-2 rounded-lg transition-colors')
+      .theme(isDark, 'bg-gray-100 hover:bg-gray-200', 'bg-slate-800 hover:bg-slate-700')
+      .build();
   });
 
-  // Mobile menu classes using template literals
+  // Mobile menu classes using ClassBuilder
   protected readonly mobileMenuClasses = computed(() => {
     const isDark = this.themeService.isDarkMode();
-    return `md:hidden border-t transition-all duration-300 animate-in fade-in slide-in-from-top-2 ${
-      isDark ? 'bg-slate-800 border-slate-700' : 'bg-gray-50 border-gray-200'
-    }`;
+    return new ClassBuilder()
+      .add('md:hidden border-t transition-all duration-300 animate-fade-in')
+      .theme(isDark, 'bg-gray-50 border-gray-200', 'bg-slate-800 border-slate-700')
+      .build();
   });
 
   /**
